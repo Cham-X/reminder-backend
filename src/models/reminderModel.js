@@ -1,11 +1,16 @@
-import db from '../config/db.js'
+import db from './../config/db.js'
 
 export const ReminderModel = {
   async getAll() {
-    const result = await db.query(
-      'SELECT * FROM reminders ORDER BY created_at DESC'
-    )
-    return result.rows
+    try {
+      console.log('in model')
+      const result = await db.query(
+        'SELECT * FROM reminders ORDER BY created_at DESC'
+      )
+      return result.rows
+    } catch (error) {
+      console.log('Error fetching reminders:', error)
+    }
   },
 
   async findById(id) {

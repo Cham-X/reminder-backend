@@ -4,6 +4,7 @@ import CustomError from './../utils/customError.js'
 
 export const ReminderService = {
   async getAllReminders() {
+    console.log('in service')
     return ReminderModel.getAll()
   },
 

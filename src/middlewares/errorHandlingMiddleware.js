@@ -1,4 +1,4 @@
-import ERROR_MESSAGES from '../constants/errorMessages.js'
+import ERROR_MESSAGES from './../constants/errorMessages.js'
 
 function errorHandler(err, req, res, next) {
   const statusCode = err.statusCode || 500

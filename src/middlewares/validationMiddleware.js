@@ -1,5 +1,5 @@
 import { ZodError } from 'zod'
-import ERROR_MESSAGES from '../constants/errorMessages.js'
+import ERROR_MESSAGES from './../constants/errorMessages.js'
 
 export function validateData(schema) {
   return (req, res, next) => {
