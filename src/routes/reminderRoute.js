@@ -1,15 +1,28 @@
 import { Router } from 'express'
 import { ReminderController } from '../controllers/reminderContoller.js'
+import { validateData } from '../middlewares/validationMiddleware.js'
+import {
+  createReminderSchema,
+  updateReminderSchema,
+} from '../schemas/reminderSchema.js'
 
 const router = Router()
 
 router.get('/', ReminderController.getAllReminders)
 
-router.get('/:id', ReminderController.getAllReminderById)
+router.get('/:id', ReminderController.getReminderById)
 
-router.post('/', ReminderController.createReminders)
+router.post(
+  '/',
+  validateData(createReminderSchema),
+  ReminderController.createReminder
+)
 
-router.patch('/:id', ReminderController.updateReminders)
+router.patch(
+  '/:id',
+  validateData(updateReminderSchema),
+  ReminderController.updateReminder
+)
 
 router.delete('/:id', ReminderController.deleteReminder)
 
