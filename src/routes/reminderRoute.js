@@ -7,7 +7,7 @@ import {
 } from './../schemas/reminderSchema.js'
 
 const router = Router()
-console.log(ReminderController)
+
 router.get('/', ReminderController.getAllReminders)
 
 router.get('/:id', ReminderController.getReminderById)
