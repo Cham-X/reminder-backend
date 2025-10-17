@@ -4,7 +4,6 @@ import CustomError from './../utils/customError.js'
 
 export const ReminderService = {
   async getAllReminders() {
-    console.log('in service')
     return ReminderModel.getAll()
   },
 
@@ -18,15 +17,17 @@ export const ReminderService = {
   },
 
   async createReminder(newReminder) {
-    const { reminder, notes, userId } = newReminder
+    console.log('in service')
+
+    const { reminder, note, userId } = newReminder
 
     const sanitizedReminder = {
       reminder: reminder?.trim(),
-      notes: notes?.trim(),
+      note: note?.trim(),
       userId,
     }
 
-    const createdReminder = ReminderModel.create(sanitizedReminder)
+    const createdReminder = await ReminderModel.create(sanitizedReminder)
     return createdReminder
   },
 

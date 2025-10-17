@@ -1,3 +1,6 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 import pg from 'pg'
 
 console.log('Initializing database connection...')

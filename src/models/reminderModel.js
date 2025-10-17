@@ -3,7 +3,6 @@ import db from './../config/db.js'
 export const ReminderModel = {
   async getAll() {
     try {
-      console.log('in model')
       const result = await db.query(
         'SELECT * FROM reminders ORDER BY created_at DESC'
       )
@@ -18,13 +17,13 @@ export const ReminderModel = {
     return result.rows[0]
   },
 
-  async create({ reminder, notes, userId }) {
+  async create({ reminder, note, userId }) {
     const result = await db.query(
       `
-      INSERT INTO reminders (reminder, notes, user_id)
+      INSERT INTO reminders (reminder, note, user_id)
       VALUES ($1, $2, $3)
       RETURNING *`,
-      [reminder, notes, userId]
+      [reminder, note, userId]
     )
     return result.rows[0]
   },

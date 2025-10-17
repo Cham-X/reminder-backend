@@ -3,7 +3,6 @@ import { ReminderService } from '../services/reminderService.js'
 export const ReminderController = {
   async getAllReminders(req, res, next) {
     try {
-      console.log('Calling this function')
       const reminders = await ReminderService.getAllReminders()
       res.status(200).json(reminders)
     } catch (error) {
@@ -24,6 +23,7 @@ export const ReminderController = {
 
   async createReminder(req, res, next) {
     try {
+      console.log('Calling this function')
       const reminder = await ReminderService.createReminder(req.body)
       res.status(200).json(reminder)
     } catch (error) {
