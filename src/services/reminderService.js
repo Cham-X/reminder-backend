@@ -8,7 +8,6 @@ export const ReminderService = {
   },
 
   async getReminderById(reminderId) {
-    // Fetch reminder by id
     const reminder = await ReminderModel.findById(reminderId)
     if (!reminder) {
       throw new CustomError(ERROR_MESSAGES.ITEM_NOT_FOUND, 404)
@@ -44,7 +43,6 @@ export const ReminderService = {
       RETURNING *;
     `
 
-    console.log(query)
     const updatedReminder = await ReminderModel.update(query, values)
     if (!updatedReminder) {
       throw new CustomError(ERROR_MESSAGES.ITEM_NOT_FOUND, 404)
